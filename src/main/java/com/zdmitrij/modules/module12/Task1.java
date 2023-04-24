@@ -6,17 +6,18 @@ public class Task1 {
 
     public void returnIndexes(int[] array, int num) {
         StringJoiner join = new StringJoiner(",");
-        for (int i = 0; i < array.length - 1; i++) {
-            for (int j = i + 1; j < array.length; j++) {
-                if (array[i] + array[j] == num) {
-                    join.add(Integer.toString(i));
-                    join.add(Integer.toString(j));
-                    break;
-                }
+        int helper = 0;
+        for (int i = 0; i < array.length; i++) {
+            if (helper == array[i]) {
+                join.add(Integer.toString(i - 1));
+                join.add(Integer.toString(i));
+                break;
             }
+            helper = num - array[i];
         }
         System.out.println("result = " + join);
     }
+
 
     public static void main(String[] args) {
         Task1 task1obj = new Task1();

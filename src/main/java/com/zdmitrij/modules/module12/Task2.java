@@ -1,22 +1,23 @@
 package com.zdmitrij.modules.module12;
 
+import static java.util.Arrays.binarySearch;
+import static java.util.Arrays.sort;
+
 public class Task2 {
-    boolean result = false;
-    private int number;
+    private int position;
+    private int temp;
+    String phrase = "Дубликатов нет. Result: false";
 
     public void ArrayDublicates(int[] array) {
-
-        for (int i = 0; i < array.length - 1; i++) {
-            for (int j = i + 1; j < array.length; j++) {
-                if (array[i] == array[j]) {
-                    result = true;
-                    number = array[i];
-                    break;
-                }
+        sort(array);
+        for (int i = 0; i < array.length; i++) {
+            position = binarySearch(array, array[i]);
+            if (array[position] == temp) {
+                phrase = ("Число " + array[i] + " повторяется 2 раза. result = true");
+                break;
             }
+            temp = array[position];
         }
-        String phrase = result ? "Число " + number + " повторяется 2 раза. " : "Дубликатов нет.";
-        System.out.println("result = " + result);
         System.out.println(phrase);
     }
 

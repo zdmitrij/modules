@@ -3,21 +3,16 @@ package com.zdmitrij.modules.module12;
 import java.util.StringJoiner;
 
 public class Task1 {
+    int temp = 0;
 
     public void returnIndexes(int[] array, int num) {
-        StringJoiner join = new StringJoiner(",");
-        int helper = 0;
         for (int i = 0; i < array.length; i++) {
-            if (helper == array[i]) {
-                join.add(Integer.toString(i - 1));
-                join.add(Integer.toString(i));
-                break;
+            if (temp == array[i]) {
+                System.out.println("result = [" + (i - 1) + ", " + (i) + "]");
             }
-            helper = num - array[i];
+            temp = num - array[i];
         }
-        System.out.println("result = " + join);
     }
-
 
     public static void main(String[] args) {
         Task1 task1obj = new Task1();
